@@ -10,4 +10,16 @@ This application is built using the Laravel web framework. Server requirements c
 
 ## Installation
 
-TODO
+`cp .env.example .env`
+
+`compose install`
+
+`php artisan key:generate`
+
+`php artisan migrate`
+
+... TODO
+
+## Testing
+
+You can run all unit / feature tests via running `phpunit` from the root directory
