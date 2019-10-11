@@ -1,0 +1,17 @@
+.btn{
+  @apply .no-underline .shadow .inline-block .px-6 .py-3 .rounded-full .font-bold;
+}
+
+.btn-primary{
+  @apply .bg-blue-600 .text-blue-200;
+  &:hover{
+    @apply .text-white .bg-blue-700;
+  }
+}
+
+.btn-default{
+  @apply .bg-white .text-blue-200;
+  &:hover{
+    @apply .text-blue-200 .bg-gray-200;
+  }
+}

@@ -1,0 +1,11 @@
+.slide-up-enter-active, .slide-up-leave-active {
+  transition: margin-bottom .2s ease-out;
+}
+
+.slide-up-enter, .slide-up-leave-to {
+  margin-bottom: -200px;
+}
+
+.slide-up-enter-to, .slide-up-leave {
+  margin-bottom: 0px;
+}

@@ -1,0 +1,22 @@
+[v-cloak] {display: none}
+
+html,body{
+  height:100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: always;
+}
+
+body{
+  font-family: "Montserrat", sans-serif;
+}
+
+a{
+
+}
+
+.bg-purple-waves{
+  background-image: url(/img/waves/wave3.svg);
+  background-position: bottom;
+  background-repeat:no-repeat;
+}

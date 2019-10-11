@@ -1,0 +1,31 @@
+.breadcrumbs{
+  margin:10px 0px 10px 0px;
+  font-size:12px;
+  display: flex;
+  flex-wrap: wrap;
+  a{
+    display: block;
+    text-decoration: none;
+    color:#666;
+    padding-right:10px;
+    &:hover{
+      span{
+        text-decoration:underline;
+      }
+    }
+    &:after{
+      padding-left:10px;
+      content:"\003e";
+    }
+    &:last-child{
+      &:hover{
+        span{
+          text-decoration:none;
+        }
+      }
+      &:after{
+        content:"";
+      }
+    }
+  }
+}

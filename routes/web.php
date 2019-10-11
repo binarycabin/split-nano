@@ -1,7 +1,7 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
+Route::namespace('Home')->prefix('/')->group(function(){
+    Route::get('/', 'HomeController@show');
 });
 
 Auth::routes();
