@@ -14,3 +14,6 @@ mix.sass('resources/sass/layouts/dashboard/app.scss', 'public/css/layouts/dashbo
         processCssUrls: false,
         postCss: [ require("tailwindcss") ]
     });
+
+//Workers
+mix.js('resources/js/workers/nano-worker.js', 'public/js/workers/nano-worker.js');

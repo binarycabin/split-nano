@@ -16,6 +16,8 @@ Update `.env` to include your:
 - Database information
 - User email address which should gain administrative rights
 - Mail SMTP settings (or mailtrap settings)
+- A new, unused Nano Seed (obtain from a fresh NanoVault instance or some other wallet). DO NOT USE A SEED YOU ALREADY KEEP YOUR FUNDS ON!
+- The URI to your Nano Node and Representative you would like to use
 
 `compose install`
 
@@ -23,15 +25,19 @@ Update `.env` to include your:
 
 `php artisan migrate`
 
-... TODO
+- Next, register an account using the admin email address you've assigned in .env and click on "Generate Accounts" to begin creating the accounts your system will use. Each Address Group a user creates will be assigned it's own address group, so it's important to know how many accounts you may need to create.
+
+- Finally, setup a cron job to run the applications scheduled tasks:
+
+```
+* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+```
 
 ## Testing
 
 You can run all unit / feature tests via running `phpunit` from the root directory
 
 ## TODO
-- Create accounts should only be permissible by admin. (.env ADMIN_USER role?)
-- Create accounts for system to use (vue component?)
 - Manage Account Groups
 - Display History on Account Groups Page
 - Schedule To Process 
