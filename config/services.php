@@ -34,4 +34,8 @@ return [
         'secret' => env('SPARKPOST_SECRET'),
     ],
 
+    'google-analytics' => [
+        'id' => env('GOOGLE_ANALYTICS_ID'),
+    ],
+
 ];

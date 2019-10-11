@@ -12,6 +12,11 @@ This application is built using the Laravel web framework. Server requirements c
 
 `cp .env.example .env`
 
+Update `.env` to include your:
+- Database information
+- User email address which should gain administrative rights
+- Mail SMTP settings (or mailtrap settings)
+
 `compose install`
 
 `php artisan key:generate`
@@ -23,3 +28,12 @@ This application is built using the Laravel web framework. Server requirements c
 ## Testing
 
 You can run all unit / feature tests via running `phpunit` from the root directory
+
+## TODO
+- Create accounts should only be permissible by admin. (.env ADMIN_USER role?)
+- Create accounts for system to use (vue component?)
+- Manage Account Groups
+- Display History on Account Groups Page
+- Schedule To Process 
+- Balance Splitter and Queue to NodeTransaction
+- Save hash to NodeTransaction when complete
