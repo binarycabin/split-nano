@@ -1,0 +1,42 @@
+version: "2"
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: docker/app/Dockerfile
+    image: bcdev/app
+    ports:
+      - "${DOCKER_NGINX_PORT}:80"
+    volumes:
+      - .:/var/www/html
+    networks:
+      - localnet
+    tty: true
+  node:
+    build:
+          context: ./
+          dockerfile: docker/node/Dockerfile
+    image: bcdev/node
+    volumes:
+      - .:/var/www/html
+    networks:
+      - localnet
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "${DOCKER_MYSQL_PORT}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "secret"
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - mysqldata:/var/lib/mysql
+    networks:
+      - localnet
+networks:
+  localnet:
+    driver: "bridge"
+volumes:
+  mysqldata:
+    driver: "local"
