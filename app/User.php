@@ -41,4 +41,8 @@ class User extends Authenticatable
         return $this->hasMany(AddressGroup::class, 'user_id', 'id');
     }
 
+    public function isAdmin(){
+        return strtolower($this->email) == strtolower(config('split.admin_user_email'));
+    }
+
 }

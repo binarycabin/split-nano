@@ -27,7 +27,7 @@ Route::namespace('Account')->prefix('/account')->middleware('auth')->group(funct
     });
 });
 
-Route::namespace('Manage')->prefix('/manage')->middleware('auth')->group(function(){
+Route::namespace('Manage')->prefix('/manage')->middleware(['auth','admin'])->group(function(){
     Route::namespace('Accounts')->prefix('/account')->group(function(){
         Route::namespace('Generate')->prefix('/generate')->group(function(){
             Route::get('/','GenerateController@index');
