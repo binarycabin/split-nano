@@ -4,8 +4,7 @@
     <div class="flex flex-wrap items-center">
         <div class="flex flex-shrink md:w-1/3 justify-center md:justify-start text-white">
             <a class="brand text-white inline-block py-2 px-2 font-black text-2xl" href="{{ url('/dashboard') }}">
-                <?php /*<img src="{{ url('/img/logo-white.png') }}" alt="{{ config('app.name') }}" style="max-height:30px;" />*/ ?>
-                {{ config('app.name') }}
+                <img src="{{ url('/img/logo.svg') }}" alt="{{ config('app.name') }}" style="max-height:40px; height:16px;" />
             </a>
         </div>
 
