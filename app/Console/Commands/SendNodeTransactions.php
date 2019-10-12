@@ -53,16 +53,22 @@ class SendNodeTransactions extends Command
                 //See if we can send it (previous hash has not been used by another Node Transaction)
                 //This is needed in case the Node is not caught up yet
                 $frontierUsed = NodeTransaction::where('hash', $accountInfoResponse->frontier)->first();
-                if (!$frontierUsed) {
+
+                $this->info('History:');
+                $accountHistory = $nano->call('account_history', [
+                    'account' => $account->address,
+                    'count' => 1,
+                ]);
+                dump($accountHistory);
+
+                //$this->info('FrontierUsed:');
+                //dump($frontierUsed);
+                //if (!$frontierUsed) {
                     $amount = $unprocessedNodeTransaction->amount;
                     $destinationAddress = $unprocessedNodeTransaction->destination_address;
                     $this->info('Send ' . $amount . ' To: ' . $destinationAddress);
 
-                    $accountHistory = $nano->call('account_history', [
-                        'account' => $account->address,
-                        'count' => 1,
-                    ]);
-                    dump($accountHistory);
+
 
                     $destinationAccountHistory = $nano->call('account_history', [
                         'account' => $destinationAddress,
@@ -111,7 +117,7 @@ class SendNodeTransactions extends Command
                         $unprocessedNodeTransaction->hash = $processResponse->hash;
                         $unprocessedNodeTransaction->save();
                     }
-                }
+                //}
             }
         }
     }
