@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\NodeTransaction;
 use App\Services\Nano\Nano;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class SendNodeTransactions extends Command
 {
@@ -41,51 +42,59 @@ class SendNodeTransactions extends Command
     {
         $nano = new Nano();
         $unprocessedNodeTransactions = NodeTransaction::whereNull('hash')->get();
-        $this->info('Found ' . $unprocessedNodeTransactions->count() . ' to process...');
+        Log::info('Found ' . $unprocessedNodeTransactions->count() . ' to process...');
         foreach ($unprocessedNodeTransactions as $unprocessedNodeTransaction) {
             $account = $unprocessedNodeTransaction->account;
-            dump($unprocessedNodeTransaction);
+            Log::info($unprocessedNodeTransaction->uuid);
+
             $accountInfoResponse = $nano->call('account_info', [
                 'account' => $account->address,
             ]);
-            dump($accountInfoResponse);
+
+            Log::info(json_encode($accountInfoResponse));
+
             if (empty($accountInfoResponse->error)) {
+
                 //See if we can send it (previous hash has not been used by another Node Transaction)
                 //This is needed in case the Node is not caught up yet
                 $frontierUsed = NodeTransaction::where('hash', $accountInfoResponse->frontier)->first();
 
-                $this->info('History:');
+                Log::info('History');
                 $accountHistory = $nano->call('account_history', [
                     'account' => $account->address,
                     'count' => 1,
                 ]);
-                dump($accountHistory);
+
+                Log::info(json_encode($accountHistory));
 
                 //$this->info('FrontierUsed:');
                 //dump($frontierUsed);
                 //if (!$frontierUsed) {
                     $amount = $unprocessedNodeTransaction->amount;
                     $destinationAddress = $unprocessedNodeTransaction->destination_address;
-                    $this->info('Send ' . $amount . ' To: ' . $destinationAddress);
 
+                    Log::info('Send ' . $amount . ' To: ' . $destinationAddress);
 
 
                     $destinationAccountHistory = $nano->call('account_history', [
                         'account' => $destinationAddress,
                         'count' => 1,
                     ]);
-                    dump($destinationAccountHistory);
+
+                    Log::info(json_encode($destinationAccountHistory));
 
                     if (!empty($accountHistory->history[0])) {
                         $previous = $accountHistory->history[0]->hash;
                     } else {
                         $previous = $accountHistory->previous;
                     }
-                    dump('Previous:');
-                    dump($previous);
-                    dump('Rep:');
+
+                    Log::info('Previous: '.$previous);
+
                     $representative = config('split.nano.representative');
-                    dump($representative);
+                    Log::info('Rep: '.$representative);
+
+
                     /*
                     $workResponse = $nano->call('work_generate', [
                         'hash' => $accountInfoResponse->frontier,
@@ -107,15 +116,20 @@ class SendNodeTransactions extends Command
                         'link' => $destinationAddress,
                         'key' => $account->secret_key,
                     ]);
-                    dump($blockCreateResponse);
+
+                    Log::info(json_encode($blockCreateResponse));
+
                     $processResponse = $nano->call('process', [
                         "json_block" => "true",
                         'block' => $blockCreateResponse->block,
                     ]);
-                    dump($processResponse);
+
+                    Log::info(json_encode($processResponse));
+
                     if (empty($processResponse->error) && !empty($processResponse->hash)) {
                         $unprocessedNodeTransaction->hash = $processResponse->hash;
                         $unprocessedNodeTransaction->save();
+                        Log::info('HASH SAVED!');
                     }
                 //}
             }
