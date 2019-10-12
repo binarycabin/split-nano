@@ -1,3 +1,5 @@
+![Split Nano](https://splitnano.com/img/banner-github.png)
+
 # Split Nano
 
 A dashboard for creating accounts that automatically forward to multiple addresses.
