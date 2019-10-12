@@ -44,6 +44,24 @@
 
         <div class="mb-8 mt-8">
             <div class="bg-white p-4">
+                <div class="md:flex justify-between">
+                    <div class="mb-4">
+                        <h2 class="text-2xl font-bold">Ready to test?</h2>
+                    </div>
+                </div>
+
+                <p class="mb-2">Paste your address above into one of these Nano faucets to get some nano and test your forwarding:</p>
+                <p>
+                    <a href="https://nanofaucet.org/" target="_blank" class="underline font-bold">nanofaucet.org</a> |
+                    <a href="https://nano-faucet.org/" target="_blank" class="underline font-bold">nano-faucet.org</a> |
+                    <a href="https://www.freenanofaucet.com" target="_blank" class="underline font-bold">freenanofaucet.com</a> |
+                    <a href="https://www.alilnano.com" target="_blank" class="underline font-bold">alilnano.com</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="mb-8 mt-8">
+            <div class="bg-white p-4">
                 <h2 class="text-lg mb-4 font-bold">History: <small><a href="{{ url('/account/address-group/'.$addressGroup->uuid) }}" class="text-sm underline text-gray-600">(Refresh)</a></small></h2>
                 @if($addressGroup->account->nodeTransactions->count() == 0)
                     <p>This account has not received any nano yet.</p>
