@@ -22,4 +22,12 @@ class Account extends Model
         return $this->hasMany(NodeTransaction::class, 'account_id', 'id');
     }
 
+    public static function getUnused($withUpdate=true){
+        $account = static::whereNull('updated_at')->first();
+        if($withUpdate){
+            $account->touch();
+        }
+        return $account;
+    }
+
 }
