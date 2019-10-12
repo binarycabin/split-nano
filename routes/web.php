@@ -20,6 +20,7 @@ Route::namespace('Account')->prefix('/account')->middleware('auth')->group(funct
         Route::get('/create', 'AddressGroupController@create');
         Route::post('/', 'AddressGroupController@store');
         Route::prefix('/{addressGroupKey}')->group(function(){
+            Route::get('/', 'AddressGroupController@show');
             Route::get('/edit', 'AddressGroupController@edit');
             Route::patch('/', 'AddressGroupController@update');
             Route::delete('/', 'AddressGroupController@destroy');

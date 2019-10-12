@@ -30,6 +30,12 @@ class AddressGroupController extends Controller
         return redirect('/account/address-group/' . $addressGroup->uuid . '/edit')->withSuccess('Saved!');
     }
 
+    public function show($addressGroupKey)
+    {
+        $addressGroup = AddressGroup::findByUuid($addressGroupKey);
+        return view('account.address-group.show', ['addressGroup' => $addressGroup]);
+    }
+
     public function edit($addressGroupKey)
     {
         $addressGroup = AddressGroup::findByUuid($addressGroupKey);
@@ -50,7 +56,7 @@ class AddressGroupController extends Controller
             'name' => $request->input('name'),
             'items' => $items,
         ]);
-        return redirect('/account/address-group/' . $addressGroup->uuid . '/edit')->withSuccess('Saved!');
+        return redirect('/account/address-group/' . $addressGroup->uuid)->withSuccess('Saved!');
     }
 
 }

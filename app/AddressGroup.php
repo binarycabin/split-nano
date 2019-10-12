@@ -23,4 +23,11 @@ class AddressGroup extends Model
         return $this->belongsTo(Account::class, 'address', 'address');
     }
 
+    public function getItemsObjectAttribute(){
+        if(empty($this->items)){
+            return [];
+        }
+        return json_decode($this->items);
+    }
+
 }

@@ -27,37 +27,6 @@
             </div>
         </div>
 
-        <div class="mb-8 mt-8">
-            <div class="bg-white p-4">
-                <h2 class="text-lg mb-4 font-bold">History:</h2>
-                @if($addressGroup->account->nodeTransactions->count() == 0)
-                    <p>This account has not received any nano yet.</p>
-                @endif
-                @foreach($addressGroup->account->nodeTransactions as $nodeTransaction)
-                    <div class="p-4 border mb-1">
-                        <div class="md:flex justify-between">
-                            <div class="w-1/4">
-                                <div><strong>Amount:</strong></div>
-                                {{ $nodeTransaction->amount }}
-                            </div>
-                            <div class="w-1/2">
-                                <div><strong>Destination:</strong></div>
-                                {{ $nodeTransaction->destination_address }}
-                            </div>
-                            <div>
-                                <div><strong>Status:</strong></div>
-                                @if(empty($nodeTransaction->hash))
-                                Preparing Send...
-                                    @else
-                                    {{ $nodeTransaction->hash }}
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
     </div>
 
 @endsection
