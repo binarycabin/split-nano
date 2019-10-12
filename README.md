@@ -38,8 +38,5 @@ Update `.env` to include your:
 You can run all unit / feature tests via running `phpunit` from the root directory
 
 ## TODO
-- Manage Account Groups
-- Display History on Account Groups Page
-- Schedule To Process 
-- Balance Splitter and Queue to NodeTransaction
+- Run send from NodeTransaction
 - Save hash to NodeTransaction when complete

@@ -18,7 +18,8 @@ class AddressGroup extends Model
         'items',
     ];
 
-    public function account(){
+    public function account()
+    {
         return $this->belongsTo(Account::class, 'address', 'address');
     }
 

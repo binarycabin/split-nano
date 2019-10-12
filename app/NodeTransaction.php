@@ -18,8 +18,9 @@ class NodeTransaction extends Model
         'hash',
     ];
 
-    public function account(){
-        return $this->belongsTo(Account::class, 'account_id','id');
+    public function account()
+    {
+        return $this->belongsTo(Account::class, 'account_id', 'id');
     }
 
 }
