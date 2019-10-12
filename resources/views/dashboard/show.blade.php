@@ -29,16 +29,23 @@
                 @endcomponent
             </div>
 
+            <h2 class="text-2xl font-bold mb-2">My Groups:</h2>
+
             @foreach($addressGroups as $addressGroup)
-                <div class="shadow p-4 border mb-1">
-                    <div>
+                <div class="shadow p-4 border mb-1 bg-white rounded">
+                    <div class="mb-2">
                         <a href="{{ url('/account/address-group/'.$addressGroup->uuid.'/edit') }}" class="font-bold">{{ $addressGroup->name }}</a>
                     </div>
-                    <div>
-                        <a href="https://nanocrawler.cc/explorer/account/{{ $addressGroup->address }}/history" target="_blank">{{ $addressGroup->address }}</a>
+                    <div class="mb-2">
+                        <div class="bg-gray-800 text-green-200 text-left p-2 shadow rounded font-bold">
+                            <span class="text-xs">{{ $addressGroup->address }}</span>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        Forwarding to {{ count($addressGroup->items_object) }} addresses
                     </div>
                     <div>
-                        <a href="{{ url('/account/address-group/'.$addressGroup->uuid.'/edit') }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ url('/account/address-group/'.$addressGroup->uuid) }}" class="btn btn-primary">View and Edit</a>
                     </div>
                 </div>
             @endforeach
