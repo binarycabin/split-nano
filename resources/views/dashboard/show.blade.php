@@ -38,7 +38,7 @@
                     </div>
                     <div class="mb-2">
                         <div class="bg-gray-800 text-green-200 text-left p-2 shadow rounded font-bold">
-                            <span class="text-xs">{{ $addressGroup->address }}</span>
+                            <span class="text-xs break-all">{{ $addressGroup->address }}</span>
                         </div>
                     </div>
                     <div class="mb-2">

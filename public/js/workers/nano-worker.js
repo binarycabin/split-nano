@@ -12740,7 +12740,7 @@ function generateNanoSecretKeys(nanoSeed) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /mnt/d/work/binary-cabin/split-nano-jam/resources/js/workers/nano-worker.js */"./resources/js/workers/nano-worker.js");
+module.exports = __webpack_require__(/*! /home/jeff/work/binary-cabin/split-nano-jam/resources/js/workers/nano-worker.js */"./resources/js/workers/nano-worker.js");
 
 
 /***/ }),

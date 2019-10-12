@@ -1,6 +1,6 @@
 <header class="header">
     <div class="container mx-auto">
-        <div class="flex justify-between px-2">
+        <div class="md:flex justify-between px-2">
             <div class="brand-container self-center">
                 <a class="brand text-white inline-block py-4 font-black text-2xl" href="{{ url('/') }}">
                     <img src="{{ url('/img/logo.svg') }}" alt="{{ config('app.name') }}" style="max-height:40px; height:25px;" />

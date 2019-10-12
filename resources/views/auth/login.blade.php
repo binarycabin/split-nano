@@ -7,7 +7,7 @@
 
             <div class="lg:flex">
                 <div class="lg:w-3/5 mb-8 mr-4">
-                    <h1 class="text-5xl mb-8 font-thin">Welcome Back.</h1>
+                    <h1 class="text-3xl md:text-5xl mb-8 font-thin">Welcome Back.</h1>
                     <div class="text-purple-lightest">
                         <p class="mb-1"></p>
                     </div>

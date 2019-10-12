@@ -6,7 +6,7 @@
         </div>
         <div>
             <div v-if="addressGroupItems.length == 0" class="text-red-600">No addresses have been added. Add one to get started</div>
-            <div v-for="(addressGroupItem, addressGroupItemKey) in addressGroupItems" class="border font-black bg-blue-600 shadow p-4 md:flex">
+            <div v-for="(addressGroupItem, addressGroupItemKey) in addressGroupItems" class="border font-black bg-blue-600 shadow p-4 md:flex mb-1">
                 <div class="mx-2 mb-2 md:w-1/4">
                     <input type="text" placeholder="Label" v-model="addressGroupItem.label" class="p-2 border w-full" />
                 </div>
@@ -14,7 +14,14 @@
                     <input type="text" placeholder="Address" v-model="addressGroupItem.address" class="p-2 border w-full" />
                 </div>
                 <div class="mx-2 mb-2 md:w-1/4">
-                    <input type="text" placeholder="Percentage" v-model="addressGroupItem.percentage" class="p-2 border" /><span class="text-white px-2">%</span>
+                    <div class="flex">
+                        <div class="mr-2">
+                            <input type="text" placeholder="Percentage" v-model="addressGroupItem.percentage" class="p-2 border w-full" />
+                        </div>
+                        <div class="">
+                            <span class="text-white px-2">%</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="mx-2 md:w-1/4 text-right">
                     <button type="button" @click="removeAddressGroupItem(addressGroupItemKey)" class="bg-red-600 text-white p-2 rounded">DELETE</button>

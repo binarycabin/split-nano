@@ -1866,6 +1866,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -37723,7 +37730,8 @@ var render = function() {
             return _c(
               "div",
               {
-                staticClass: "border font-black bg-blue-600 shadow p-4 md:flex"
+                staticClass:
+                  "border font-black bg-blue-600 shadow p-4 md:flex mb-1"
               },
               [
                 _c("div", { staticClass: "mx-2 mb-2 md:w-1/4" }, [
@@ -37779,32 +37787,37 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "mx-2 mb-2 md:w-1/4" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: addressGroupItem.percentage,
-                        expression: "addressGroupItem.percentage"
-                      }
-                    ],
-                    staticClass: "p-2 border",
-                    attrs: { type: "text", placeholder: "Percentage" },
-                    domProps: { value: addressGroupItem.percentage },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                  _c("div", { staticClass: "flex" }, [
+                    _c("div", { staticClass: "mr-2" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: addressGroupItem.percentage,
+                            expression: "addressGroupItem.percentage"
+                          }
+                        ],
+                        staticClass: "p-2 border w-full",
+                        attrs: { type: "text", placeholder: "Percentage" },
+                        domProps: { value: addressGroupItem.percentage },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              addressGroupItem,
+                              "percentage",
+                              $event.target.value
+                            )
+                          }
                         }
-                        _vm.$set(
-                          addressGroupItem,
-                          "percentage",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  }),
-                  _c("span", { staticClass: "text-white px-2" }, [_vm._v("%")])
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(0, true)
+                  ])
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "mx-2 md:w-1/4 text-right" }, [
@@ -37853,7 +37866,16 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", {}, [
+      _c("span", { staticClass: "text-white px-2" }, [_vm._v("%")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -50149,7 +50171,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /mnt/d/work/binary-cabin/split-nano-jam/resources/js/dashboard.js */"./resources/js/dashboard.js");
+module.exports = __webpack_require__(/*! /home/jeff/work/binary-cabin/split-nano-jam/resources/js/dashboard.js */"./resources/js/dashboard.js");
 
 
 /***/ })

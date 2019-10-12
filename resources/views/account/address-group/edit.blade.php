@@ -14,7 +14,13 @@
                 {!! Former::populate($addressGroup) !!}
                 {!! Former::text('name','Group Name')->help('Choose a name for your team or group. ie: "The Avengers" or "Coinbase"') !!}
                 <div class="mb-4">
-                    Any balance sent to <code class="p-2 bg-gray-800 text-green-200 text-xs">{{ $addressGroup->address }}</code> will be distributed to the accounts below:
+                    Any balance sent to
+
+                    <div class="mb-1">
+                        <code class="p-2 bg-gray-800 text-green-200 text-xs break-all">{{ $addressGroup->address }}</code>
+                    </div>
+
+                    will be distributed to the accounts below:
                 </div>
                 <div class="mb-4">
                     <address-group-items initial-items="{{ $addressGroup->items }}"></address-group-items>

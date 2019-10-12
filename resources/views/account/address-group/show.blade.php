@@ -21,7 +21,7 @@
 
                 <h3 class="text-lg font-bold mb-4">Your group address is:</h3>
 
-                <div class="bg-gray-800 text-green-200 text-center p-4 shadow rounded text-lg font-bold mb-4">
+                <div class="bg-gray-800 text-green-200 text-center p-4 shadow rounded text-lg font-bold mb-4 break-all">
                     {{ $addressGroup->address }}
                 </div>
 
@@ -34,7 +34,7 @@
                                 <div class="font-bold mb-2">{{ $item->label }}</div>
                                 <div class="text-right mb-2"><span class="inline-block rounded bg-blue-200 rounded p-1 text-sm">{{ $item->percentage }}%</span></div>
                             </div>
-                            <div class="text-xs text-gray-600">{{ $item->address }}</div>
+                            <div class="text-xs text-gray-600 break-all">{{ $item->address }}</div>
                         </div>
                     @endforeach
                 </div>
@@ -69,18 +69,18 @@
                 @foreach($addressGroup->account->nodeTransactions as $nodeTransaction)
                     <div class="p-4 border mb-1">
                         <div class="md:flex justify-between">
-                            <div class="w-1/4">
+                            <div class="md:w-1/4">
                                 <div><strong>Amount:</strong></div>
                                 {{ number_format(\BinaryCabin\NanoUnits\NanoUnits::convert('raw','ticker', $nodeTransaction->amount),6,'.','') }}
                             </div>
-                            <div class="w-1/2">
+                            <div class="md:w-1/2">
                                 <div><strong>Destination:</strong></div>
-                                <span class="text-xs">{{ $nodeTransaction->destination_address }}</span>
+                                <span class="text-xs break-all">{{ $nodeTransaction->destination_address }}</span>
                             </div>
-                            <div class="w-1/4">
+                            <div class="md:w-1/4">
                                 <div><strong>Status:</strong></div>
                                 @if(empty($nodeTransaction->hash))
-                                    <span class="text-yello-800">Preparing Send...</span>
+                                    <span class="text-yellow-800">Preparing Send...</span>
                                 @else
                                     <a href="https://nanocrawler.cc/explorer/block/{{ $nodeTransaction->hash }}" target="_blank" class="text-green-600 underline font-bold">Sent!</a>
                                 @endif
