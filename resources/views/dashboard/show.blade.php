@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @component('components.layout.dashboard.title')
+    @component('components.layout.dashboard.title',['withNodeStatus'=>true])
         Dashboard
     @endcomponent
 
