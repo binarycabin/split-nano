@@ -4,7 +4,7 @@
 
 - [splitnano.com](https://splitnano.com)
 
-A dashboard for creating accounts that automatically forward to multiple addresses.
+*Split Nano* allows teams to accept Nano cryptocurrency payments to a single address, and provides a dashboard for automatically splitting and forwarding those payments to everyone on your team!
 
 If you'd like to try out and use this system you can setup an account at [splitnano.com](https://splitnano.com) or you can setup your own local application using the details below
 
