@@ -62,9 +62,10 @@ class Account extends Model
                     'account' => $this->address,
                 ]);
                 dump($accountInfoResponse);
-                $existingBalance = $accountInfoResponse->balance ?? 0;
-                $newBalance = $blockInfoResponse->amount + $existingBalance;
-                $newBalanceString = sprintf('%.0f', $newBalance);
+                //$existingBalance = $accountInfoResponse->balance ?? 0;
+                //$newBalance = $blockInfoResponse->amount + $existingBalance;
+                $newBalance = $blockInfoResponse->balance;
+                $newBalanceString = $newBalance;//sprintf('%.0f', $newBalance);
                 $createBlockData = [
                     'json_block' => 'true',
                     'type' => 'state',
