@@ -24,8 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('nano:distribute-balances')->everyMinute();
-        $schedule->command('nano:send-node-transactions')->everyMinute();
+        $schedule->command('nano:distribute-balances')->everyFiveMinutes();
+        $schedule->command('nano:send-node-transactions')->everyFiveMinutes();
     }
 
     /**
