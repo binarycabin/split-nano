@@ -63,6 +63,7 @@
         <div class="mb-8 mt-8">
             <div class="bg-white p-4">
                 <h2 class="text-lg mb-4 font-bold">History: <small><a href="{{ url('/account/address-group/'.$addressGroup->uuid) }}" class="text-sm underline text-gray-600">(Refresh)</a></small></h2>
+                <p class="mb-2"><strong>Note:</strong> It may take up to 10 minutes to see new transactions.</p>
                 @if($addressGroup->account->nodeTransactions->count() == 0)
                     <p>This account has not received any nano yet.</p>
                 @endif
