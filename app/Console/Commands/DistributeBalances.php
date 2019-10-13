@@ -53,6 +53,7 @@ class DistributeBalances extends Command
 
                 Log::info('Getting Balance...');
                 $balanceInformation = $addressGroup->account->getBalanceInformation();
+                Log::info(json_encode($balanceInformation));
                 if (!empty($balanceInformation->node) && !empty($balanceInformation->node->pending)) {
                     $addressGroup->account->receivePending();
                     $balanceInformation = $addressGroup->account->getBalanceInformation();
