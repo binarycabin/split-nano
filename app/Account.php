@@ -68,7 +68,7 @@ class Account extends Model
                 //$newBalance = $blockInfoResponse->amount + $existingBalance;
                 $newBalance = bcadd($blockInfoResponse->amount, $existingBalance);
                 Log::info('New Balance: '.$newBalance);
-                $newBalanceString = sprintf('%.0f', $newBalance);
+                $newBalanceString = (string) $newBalance;//sprintf('%.0f', $newBalance);
                 Log::info('New Balance String: '.$newBalanceString);
                 $createBlockData = [
                     'json_block' => 'true',
