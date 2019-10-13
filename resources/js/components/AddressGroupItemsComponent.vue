@@ -29,7 +29,10 @@
             </div>
         </div>
         <textarea class="hidden" name="items" v-model="addressGroupData"></textarea>
-
+        <div v-if="addressGroupItems.length > 0 && totalPercentage != 100" class="text-red-600 font-bold p-4 border mb-4">
+            Total Percentage: {{ totalPercentage }} <br/>
+            This value must equal 100!
+        </div>
     </div>
 </template>
 
@@ -72,6 +75,13 @@
             },
             addressGroupData: function(){
                 return JSON.stringify(this.addressGroupItems);
+            },
+            totalPercentage: function(){
+                let total = 0;
+                for(var i=0;i<this.addressGroupItems.length; i++){
+                    total += parseFloat(this.addressGroupItems[i].percentage);
+                }
+                return total;
             }
         }
     }

@@ -1873,6 +1873,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -1908,6 +1911,15 @@ __webpack_require__.r(__webpack_exports__);
     },
     addressGroupData: function addressGroupData() {
       return JSON.stringify(this.addressGroupItems);
+    },
+    totalPercentage: function totalPercentage() {
+      var total = 0;
+
+      for (var i = 0; i < this.addressGroupItems.length; i++) {
+        total += parseFloat(this.addressGroupItems[i].percentage);
+      }
+
+      return total;
     }
   }
 });
@@ -37862,7 +37874,17 @@ var render = function() {
             _vm.addressGroupData = $event.target.value
           }
         }
-      })
+      }),
+      _vm._v(" "),
+      _vm.addressGroupItems.length > 0 && _vm.totalPercentage != 100
+        ? _c("div", { staticClass: "text-red-600 font-bold p-4 border mb-4" }, [
+            _vm._v(
+              "\n        Total Percentage: " + _vm._s(_vm.totalPercentage) + " "
+            ),
+            _c("br"),
+            _vm._v("\n        This value must equal 100!\n    ")
+          ])
+        : _vm._e()
     ]
   )
 }

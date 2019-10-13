@@ -49,7 +49,13 @@ class AddressGroupController extends Controller
             'items' => 'required',
         ]);
         $items = json_decode($request->input('items'));
-        //TODO - validation
+        $totalPercentage = 0;
+        foreach($items as $item){
+            $totalPercentage += $item->percentage;
+        }
+        if($totalPercentage != 100){
+            return redirect()->back()->withInput()->withError('Total Percentage Must Equal 100!');
+        }
         $items = json_encode($items);
         $addressGroup = AddressGroup::findByUuid($addressGroupKey);
         $addressGroup->update([
