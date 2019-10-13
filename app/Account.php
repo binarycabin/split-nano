@@ -6,6 +6,7 @@ use App\Services\Nano\Nano;
 use BinaryCabin\LaravelUUID\Traits\HasUUID;
 use BinaryCabin\NanoUnits\NanoUnits;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class Account extends Model
 {
@@ -44,27 +45,31 @@ class Account extends Model
     public function receivePending()
     {
         $nano = new Nano();
+        Log::info('receivePending...');
         $response = $nano->call('pending', [
             'account' => $this->address,
         ]);
-        dump('receivePending...');
-        dump($response);
+        Log::info(json_encode($response));
         if (!empty($response->blocks)) {
             foreach ($response->blocks as $block) {
-                dump($this->address);
-                dump($block);
+                Log::info($this->address);
+                Log::info(json_encode($block));
                 $blockInfoResponse = $nano->call('block_info', [
                     'json_block' => 'true',
                     'hash' => $block,
                 ]);
-                dump($blockInfoResponse);
+                Log::info(json_encode($blockInfoResponse));
                 $accountInfoResponse = $nano->call('account_info', [
                     'account' => $this->address,
                 ]);
-                dump($accountInfoResponse);
+                Log::info(json_encode($accountInfoResponse));
                 $existingBalance = $accountInfoResponse->balance ?? 0;
-                $newBalance = $blockInfoResponse->amount + $existingBalance;
+                Log::info('Existing Balance: '.$existingBalance);
+                //$newBalance = $blockInfoResponse->amount + $existingBalance;
+                $newBalance = bcadd($blockInfoResponse->amount, $existingBalance);
+                Log::info('New Balance: '.$newBalance);
                 $newBalanceString = sprintf('%.0f', $newBalance);
+                Log::info('New Balance String: '.$newBalanceString);
                 $createBlockData = [
                     'json_block' => 'true',
                     'type' => 'state',
@@ -79,14 +84,16 @@ class Account extends Model
                 } else {
                     $createBlockData['previous'] = $accountInfoResponse->frontier;
                 }
-                dump($createBlockData);
+                Log::info(json_encode($createBlockData));
                 $blockCreateResponse = $nano->call('block_create', $createBlockData);
-                dump($blockCreateResponse);
+                Log::info('Create Block:');
+                Log::info(json_encode($blockCreateResponse));
+                Log::info('Process:');
                 $processResponse = $nano->call('process', [
                     "json_block" => "true",
                     'block' => $blockCreateResponse->block,
                 ]);
-                dump($processResponse);
+                Log::info(json_encode($processResponse));
 
                 /*$workResponse = $nano->call('work_generate', [
                     'hash' => $accountInfoResponse->frontier,
@@ -94,9 +101,12 @@ class Account extends Model
                 ]);
                 dump($workResponse);*/
 
+                /*
                 $receiveResponse = $nano->call('receive', [
                     'account' => $this->address,
                 ]);
+                Log::info(json_encode($receiveResponse));
+                */
             }
         }
         return $response;
