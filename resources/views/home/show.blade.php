@@ -13,8 +13,9 @@
                     <h2 class="mb-8 font-thin">
                         <div>Have nano payments sent to a single address, then automatically split between your team</div>
                     </h2>
-                    <div>
+                    <div class="md:flex justify-between">
                         <a href="{{ url('/register') }}" class="no-underline btn bg-blue-700 shadow inline-block px-8 py-3 text-white rounded-full text-2xl font-bold hover:text-blue-600 hover:bg-white">Give it a try</a>
+                        <a href="https://www.youtube.com/watch?v=qFLOTjrL7tU&feature=youtu.be" target="_blank" class="no-underline btn shadow inline-block px-8 py-3 text-white rounded-full text-2xl font-bold hover:text-blue-600 hover:bg-white">Watch a preview</a>
                     </div>
                 </div>
 
