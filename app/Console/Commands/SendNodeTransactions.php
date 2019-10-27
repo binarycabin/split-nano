@@ -118,19 +118,23 @@ class SendNodeTransactions extends Command
                     ]);
 
                     Log::info(json_encode($blockCreateResponse));
+                    if(!empty($blockCreateResponse->block)){
+                        $processResponse = $nano->call('process', [
+                            "json_block" => "true",
+                            'block' => $blockCreateResponse->block,
+                        ]);
 
-                    $processResponse = $nano->call('process', [
-                        "json_block" => "true",
-                        'block' => $blockCreateResponse->block,
-                    ]);
+                        Log::info(json_encode($processResponse));
 
-                    Log::info(json_encode($processResponse));
+                        if (empty($processResponse->error) && !empty($processResponse->hash)) {
+                            $unprocessedNodeTransaction->hash = $processResponse->hash;
+                            $unprocessedNodeTransaction->save();
+                            Log::info('HASH SAVED!');
+                        }
 
-                    if (empty($processResponse->error) && !empty($processResponse->hash)) {
-                        $unprocessedNodeTransaction->hash = $processResponse->hash;
-                        $unprocessedNodeTransaction->save();
-                        Log::info('HASH SAVED!');
                     }
+
+
                 //}
             }
         }
