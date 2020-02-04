@@ -71,7 +71,7 @@
         },
         computed: {
             canAddItems: function(){
-                return this.addressGroupItems.length < 10;
+                return this.addressGroupItems.length < 25;
             },
             addressGroupData: function(){
                 return JSON.stringify(this.addressGroupItems);
