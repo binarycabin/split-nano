@@ -33,7 +33,9 @@
                     </div>
 
                     <div class="text-sm text-purple-lighter">
+                        @if(Route::has('register'))
                         <p class="text-right mb-4">Need an account? <a class="text-purple-lightest" href="{{ route('register') }}">Click here to sign up</a></p>
+                        @endif
                         <p class="text-right mb-4">Trouble Logging In? <a class="text-purple-lightest" href="{{ route('password.request') }}">Reset your password</a></p>
                     </div>
 

@@ -4,7 +4,7 @@ Route::namespace('Home')->prefix('/')->group(function(){
     Route::get('/', 'HomeController@show');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::namespace('Dashboard')->prefix('/dashboard')->middleware('auth')->group(function(){
     Route::get('/', 'DashboardController@show');
